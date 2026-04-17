@@ -1,0 +1,64 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: nova-health-agent
+  profiles:
+    active: dev
+  ai:
+#    vectorstore:
+#      pgvector:
+#        index-type: HNSW
+#        dimensions: 1536
+#        distance-type: COSINE_DISTANCE
+#        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+
+    dashscope:
+      api-key: 你的key
+      chat:
+        options:
+          model: qwen3.5-omni-plus-2026-03-15
+
+    mcp:
+#      client:
+#        sse:
+#          connections:
+#            server1:
+#              url: http://localhost:8127
+        stdio:
+          servers-configuration: classpath:mcp-servers.json
+
+#  datasource:
+#    url: jdbc:postgresql://rm-cn-zll4qprto0001.rwlb.rds.aliyuncs.com:5432/nova-health-agent
+#    username: root
+#    password: 123456
+
+search-api:
+  api-key: 你的key
+
+  # ==================== Spring AI Alibaba ?? ====================
+
+
+## springdoc-openapi????
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+#    tags-sorter: alpha
+#    operations-sorter: alpha
+#  api-docs:
+#    path: /v3/api-docs
+#  group-configs:
+#    - group: 'default'
+#      paths-to-match: '/**'
+#      packages-to-scan: nova.health.agent.controller
+## knife4j config
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+#logging:
+#  level:
+#    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug
